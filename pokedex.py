@@ -96,7 +96,7 @@ def remove_table():
             print("deletion has been stopped!")
             return
 
-def Select_table():
+def select_table():
     with mysql.connector.connect(host=hostname,user=user,passwd=password,database=database) as f:
         cursor=f.cursor()
         
