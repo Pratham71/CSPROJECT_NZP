@@ -11,12 +11,11 @@ def show_table():
         table_name="pokemon"
         query=f"select * from {table_name}"
         cursor.execute(query)
-        data=cursor.fetchall()
-        header=('sno','ranks','name','type','total','HP','attack','defense','Sp. atk','Sp. def','Speed','generation','legendary')
-        df=pandas.DataFrame(data,columns=header)#used to show the data in tabular form.
-        df=df.set_index('sno')#to controll the the indexes of the dataframe
-        df=df.to_string()#coverting the dataframe to string so that we can see all the entries
+        df=pandas.read_sql_query(sql=query,con=f)
+        df=df.set_index('sno')
+        df=df.to_string()
         print(df)
+        return
 
 def describe_table():
     with mysql.connector.connect(host=hostname,user=user,passwd=password,database=database) as f:
@@ -27,6 +26,8 @@ def describe_table():
         header=["Field","Type","Null","Key","Default","Extra"]
         df=pandas.DataFrame(data=data,columns=header)
         print(df)
+        return
+
 
 def insert_table():
     with mysql.connector.connect(host=hostname,user=user,passwd=password,database=database) as f:
@@ -54,6 +55,8 @@ def insert_table():
         insert_table()#recurse
     else:
         return
+    return
+    
 
 def remove_table():
     with mysql.connector.connect(host=hostname,user=user,passwd=password,database=database) as f:
@@ -85,7 +88,8 @@ def remove_table():
                 return
             else:
                 print("ending the program!")
-                pass
+                return
+
             
         else:
             query=""
@@ -138,6 +142,8 @@ def Select_table():
         df=pandas.DataFrame(data=data,columns=query_data)
         df=df.to_string()
         print(df)
+        return
+
 
 def update_table():
     with mysql.connector.connect(host=hostname,user=user,passwd=password,database=database) as f:
@@ -166,8 +172,51 @@ def update_table():
         
         cursor.execute(query)
         f.commit()
+        return
 
-def sql_to_csv():
+def alter_table():
+    with mysql.connector.connect(host=hostname,user=user,passwd=password,database=database) as f:
+        cursor=f.cursor()
+        print("loading the field and thier constraints!\n")
+        describe_table()
+        print()
+        options='''
+~~~menu~~~
+1)add column
+2)drop column
+3)rename column
+~~~choice~~~
+''' 
+        print(options)
+        choice=int(input("enter your choice:"))
+        match choice:
+            case 1:
+                querys=input("enter the table name <datatype> <constraint>:")
+                query="alter table ttt add {}".format(querys)
+            case 2:
+                querys=input("enter the table named to dropped:")
+                query="alter table ttt drop {}".format(querys)
+            case 3:
+                before=input("enter table named to be rename:")
+                after=input("enter the new name:")
+                query="alter table ttt rename column {} to {}".format(before,after)
+        print()
+        cursor.execute(query)
+        print("Altered table!")
+        return
+
+def truncate(tablename:str):
+    with mysql.connector.connect(host=hostname,user=user,passwd=password,database=database) as f:
+        cursor=f.cursor()
+        confo=input(f"are you sure you want to truncate this table?{tablename} [y/n]:")
+        if confo.lower() in 'y':
+            query=f"truncate table {tablename}"
+            cursor.execute(query)
+            print("task completed")
+            return
+        return
+    
+def sql_to_csv(path:str):
     with mysql.connector.connect(host=hostname,user=user,passwd=password,database=database) as f:
         cursor=f.cursor()
         query="desc pokemon"
@@ -186,31 +235,34 @@ def sql_to_csv():
 
         data=tuple(data)
 
-    CsvName=input('enter the csv file name (which will be generated and created):')
-    with open(f"{CsvName}.csv","w",newline='\n') as fo:
+    with open(path,"w",newline='\n') as fo:
         w=csv.writer(fo)
         w.writerow(headers)
         w.writerows(data)
+        return
 
-def csv_to_sql(CsvFileName:str,TableName:str):
-    with open(f"{CsvFileName}.csv","r") as f:
-        reader=csv.reader(f)
-        csv_list=[]
-        for x in reader:
-            x=tuple(x)
-            csv_list.append(x)
-        headers=csv_list.pop(0)
-        csv_list=tuple(csv_list)
-        #print(csv_list)
-    header=input("enter your header query seperate every query with ',' (format: <name> <data_type> <constraint>, <--repeat):")
-    headers=input("enter your headers without the the datatype and constraint:")
+def csv_to_sql(path:str,tablename:str):
+    """function will only work if the table is already created!
+    with the macthing headers!"""
     with mysql.connector.connect(host=hostname,user=user,passwd=password,database=database) as f:
+        with open(path,'r') as fo:
+            reader=csv.reader(fo)
+            reader_list=[]
+            for x in reader:
+                reader_list.append(tuple(x))
+            h=reader_list.pop(0)
         cursor=f.cursor()
-        query=f"create table {TableName}({header})"
-        #cursor.execute(query)
-        for x in csv_list:
-            #print(x)
-            query=f"insert into {TableName}({headers}) values{x}"
-            print(query)
+        for x in range(len(reader_list)):
+            query=f"insert into {tablename} values{reader_list[x]}"
             cursor.execute(query)
         f.commit()
+    
+        confo=input("do you want to view the table? [y/n]:")
+        if confo.lower() in 'y':
+            query=f"select * from {tablename}"
+            df=pandas.read_sql_query(query,f)
+            df=df.set_index(h[0])
+            df=df.to_string()
+            print(df)
+            return
+        return
