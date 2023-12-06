@@ -1,17 +1,51 @@
 import mysql.connector
+import pandas
+import csv
+from time import sleep
 from details import GetDetails
 host,user,passwd,database=GetDetails()
+
+def csv_to_sql(path:str,tablename:str):
+    """function will only work if the table is already created!
+    with the macthing headers!"""
+    with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as f:
+        with open(path,'r') as fo:
+            reader=csv.reader(fo)
+            reader_list=[]
+            for x in reader:
+                reader_list.append(tuple(x))
+            h=reader_list.pop(0)
+        cursor=f.cursor()
+        for x in range(len(reader_list)):
+            query=f"insert into {tablename} values{reader_list[x]}"
+            cursor.execute(query)
+        f.commit()
+    
+        confo=input("do you want to view the table? [y/n]:")
+        if confo.lower() in 'y':
+            sleep(3)
+            query=f"select * from {tablename}"
+            df=pandas.read_sql_query(query,f)
+            df=df.set_index(h[0])
+            df=df.to_string()
+            print(df)
+            
+    return
+
 def setup():
     try:
-        with mysql.connector.connect(host=host,user=user,passwd=passwd) as f:
+        with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as f:
             cursor=f.cursor()
             query=f"create database if not exists {database}"
             cursor.execute(query)
-            query=f"use {database}"
-            cursor.execute(query)
+
             query="create table if not exists SHOES(SID int primary key,BRAND varchar(255), Name varchar(255),Size varchar(10),Gender char(3),Review int)"
             cursor.execute(query)
             print('Completed')
+            tablename="shoes"
+            path="Shoe Management\shoes.csv"
+            csv_to_sql(path=path,tablename=tablename)
+        print("task completed!")
         return
     except Exception as e:
         print(e)
