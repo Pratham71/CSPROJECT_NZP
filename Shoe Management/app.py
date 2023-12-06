@@ -13,7 +13,7 @@ def AddItem():
             SID=int(input("Enter the id of the shoe:"))
             Brand=input("Enter the brand for the shoe:")
             Name=input("Enter the name of shoe:")
-            Size=input("Enter the size of shoe [foramt: USX or UKX x being a number]:")
+            Size=input("Enter the size of shoe:")
             Gender=input("Enter the gender for the shoe [M/F or U for Unisex]:")
             Rating=float(input("Enter the rating for the shoe:"))
 
@@ -172,4 +172,4 @@ def main():
             break
         else:
             print("Invalid Choice/nTry Again")
-
+main()
