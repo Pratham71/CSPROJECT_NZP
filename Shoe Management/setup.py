@@ -5,7 +5,7 @@ from time import sleep
 from details import GetDetails
 host,user,passwd,database=GetDetails()
 
-def csv_to_sql(path:str,tablename:str):
+def csv_to_sql(path:str,tablename:str,database:str):
     """function will only work if the table is already created!
     with the macthing headers!"""
     with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as f:
@@ -29,23 +29,30 @@ def csv_to_sql(path:str,tablename:str):
             df=df.set_index(h[0])
             df=df.to_string()
             print(df)
+            sleep(10)
             
     return
 
 def setup():
     try:
-        with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as f:
+        with mysql.connector.connect(host=host,user=user,passwd=passwd) as f:
             cursor=f.cursor()
             query=f"create database if not exists {database}"
             cursor.execute(query)
-
+            print("created database named {}".format(database))
+            sleep(2)
+            cursor.execute(f"use {database}")
             query="create table if not exists SHOES(SID int primary key,BRAND varchar(255), Name varchar(255),Size varchar(10),Gender char(3),Review float)"
             cursor.execute(query)
-            print('Completed')
+            print("created table named shoes")
+            sleep(2)
             tablename="shoes"
-            path="Shoe Management\shoes.csv"
-            csv_to_sql(path=path,tablename=tablename)
+            path="C:\\Users\\Pratham\\Desktop\\Projetcs\\Shoe Management\\shoes.csv"
+            csv_to_sql(path=path,tablename=tablename,database=database)
+            print("inserted all the data into the database!")
+            sleep(2)
         print("task completed!")
+        sleep(1.5)
         return
     except Exception as e:
         print(e)

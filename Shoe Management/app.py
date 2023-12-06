@@ -2,6 +2,7 @@ import mysql.connector
 from details import GetDetails
 from time import sleep
 host,user,passwd,database=GetDetails()
+# with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as con:
 
 def AddItem():
     with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as con:
@@ -79,7 +80,7 @@ def UpdateItem():
 
             
             elif choice == 5:
-                new_review=float(input("Enter the new rating for the shoe:"))
+                new_review=float("Enter the new rating for the shoe:")
                 query=f"update shoes set review='{new_review}' where sid = {SID}"
                 cursor.execute(query)
                 con.commit()
