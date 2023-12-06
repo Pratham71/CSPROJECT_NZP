@@ -39,7 +39,7 @@ def setup():
             cursor=f.cursor()
             query=f"create database if not exists {database}"
             cursor.execute(query)
-            print("created database named {}".format(database))
+            print(f"created database named {database}")
             sleep(2)
             cursor.execute(f"use {database}")
             query="create table if not exists SHOES(SID int primary key,BRAND varchar(255), Name varchar(255),Size varchar(10),Gender char(3),Review float)"
