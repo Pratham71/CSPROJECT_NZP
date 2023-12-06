@@ -15,7 +15,7 @@ def AddItem():
             Name=input("Enter the name of shoe:")
             Size=input("Enter the size of shoe [foramt: USX or UKX x being a number]:")
             Gender=input("Enter the gender for the shoe [M/F or U for Unisex]:")
-            Rating=int(input("Enter the rating for the shoe:"))
+            Rating=float(input("Enter the rating for the shoe:"))
 
             try:
                 query=f"insert into shoes values({SID},'{Brand}','{Name}','{Size}','{Gender}',{Rating})"
@@ -79,8 +79,8 @@ def UpdateItem():
 
             
             elif choice == 5:
-                new_review=input("Enter the new rating for the shoe:")
-                query=f"update shoes set reviewr='{new_review}' where sid = {SID}"
+                new_review=float(input("Enter the new rating for the shoe:"))
+                query=f"update shoes set review='{new_review}' where sid = {SID}"
                 cursor.execute(query)
                 con.commit()
             else:
