@@ -47,7 +47,7 @@ def setup():
             print("created table named shoes")
             sleep(2)
             tablename="shoes"
-            path="C:\\Users\\Pratham\\Desktop\\Projetcs\\Shoe Management\\shoes.csv"
+            path="path_to_csv_file"
             csv_to_sql(path=path,tablename=tablename,database=database)
             print("inserted all the data into the database!")
             sleep(2)
