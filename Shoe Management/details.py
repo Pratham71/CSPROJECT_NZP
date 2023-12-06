@@ -1,2 +1,2 @@
 def GetDetails():
-    return "localhost","root","local_password","Shoes"
+    return "localhost","root","pratham12W@!","Shoes"

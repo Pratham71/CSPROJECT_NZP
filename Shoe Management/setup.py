@@ -39,15 +39,15 @@ def setup():
             cursor=f.cursor()
             query=f"create database if not exists {database}"
             cursor.execute(query)
-            print(f"created database named {database}")
+            print("created database named {}".format(database))
             sleep(2)
             cursor.execute(f"use {database}")
-            query="create table if not exists SHOES(SID int primary key,BRAND varchar(255), Name varchar(255),Size varchar(10),Gender char(3),Review float)"
+            query="create table if not exists SHOES(SID int primary key,BRAND varchar(255), Name varchar(255),price int,Size varchar(10),Gender char(3),Review float)"
             cursor.execute(query)
             print("created table named shoes")
             sleep(2)
             tablename="shoes"
-            path="path_to_csv_file"
+            path="C:\\Users\\Pratham\\Desktop\\Projetcs\\Shoe Management\\shoes.csv"
             csv_to_sql(path=path,tablename=tablename,database=database)
             print("inserted all the data into the database!")
             sleep(2)

@@ -12,13 +12,14 @@ def AddItem():
             print()
             SID=int(input("Enter the id of the shoe:"))
             Brand=input("Enter the brand for the shoe:")
-            Name=input("Enter the name of shoe:")
-            Size=input("Enter the size of shoe:")
+            Name=input("Enter the name of the shoe:")
+            Price=int(input("Enter the price of the shoe"))
+            Size=input("Enter the size of the shoe:")
             Gender=input("Enter the gender for the shoe [M/F or U for Unisex]:")
             Rating=float(input("Enter the rating for the shoe:"))
 
             try:
-                query=f"insert into shoes values({SID},'{Brand}','{Name}','{Size}','{Gender}',{Rating})"
+                query=f"insert into shoes values({SID},'{Brand}','{Name}',{Price},'{Size}','{Gender}',{Rating})"
                 cursor.execute(query)
                 con.commit()
                 print("inserted the details of the shoes!")
@@ -36,6 +37,7 @@ def UpdateItem():
         query="desc shoes"
         cursor.execute(query)
         headers=[i[0] for i in cursor.fetchall()]
+        print(headers)
         ans="y"
         while ans.lower() in "y":
             SID=int(input("Enter the shoe id:"))
@@ -49,7 +51,8 @@ def UpdateItem():
             print(f"2){headers[2]}")
             print(f"3){headers[3]}")
             print(f"4){headers[4]}")
-            print("5)Rating")
+            print(f"5){headers[5]}")
+            print("6)Rating")
             choice=int(input("Enter your choice:"))
             print("\n")
             if choice == 1:
@@ -65,20 +68,25 @@ def UpdateItem():
                 con.commit()
 
             elif choice == 3:
-                new_size=input("Enter the size of shoe [foramt: USX or UKX x being a number]:")
-                query=f"Update shoes set size='{new_size}' where sid={SID}"
+                new_price=int(input("Enter the new price of the shoe:"))
+                query=f"Update shoes set size={new_price} where sid={SID}"
                 cursor.execute(query)
                 con.commit()
 
-            
             elif choice == 4:
+                new_size=input("Enter the new size of shoe:")
+                query=f"Update shoes set name='{new_size}' where sid={SID}"
+                cursor.execute(query)
+                con.commit()
+
+            elif choice == 5:
                 new_gender=input("Enter the new gender for the shoe [M/F or U for Unisex]:")
                 query=f"update shoes set gender='{new_gender}' where sid = {SID}"
                 cursor.execute(query)
                 con.commit()
 
             
-            elif choice == 5:
+            elif choice == 6:
                 new_review=float("Enter the new rating for the shoe:")
                 query=f"update shoes set review='{new_review}' where sid = {SID}"
                 cursor.execute(query)
@@ -86,7 +94,7 @@ def UpdateItem():
             else:
                 print("Invalid Choice!")
             ans=input("Do you want to use more operations? [y/n]:")
-           
+UpdateItem()      
 def ShowItems():
     with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as con:
         cursor=con.cursor()
@@ -172,4 +180,4 @@ def main():
             break
         else:
             print("Invalid Choice/nTry Again")
-main()
+
