@@ -1,0 +1,91 @@
+SID,BRAND,Name,Price,Size,Gender,Review
+1,Nike,Air Jordan 1 Retro High OG,170,9.5,M,4.8
+2,Adidas,Yeezy Boost 350 V2,220,10,M,4.9
+3,Converse,Chuck Taylor All Star Low,55,8,F,4.7
+4,Puma,Suede Classic,65,7.5,F,4.5
+5,Reebok,Club C 85,80,8.5,M,4.6
+6,New Balance,574 Core,79.99,9.5,M,4.7
+7,Vans,Old Skool,60,8.5,F,4.6
+8,Under Armour,Hovr Sonic 4,100,9,M,4.8
+9,Asics,Gel-Kayano 27,160,10.5,F,4.9
+10,Jordan,Air Jordan 4 Retro,190,9.5,M,4.8
+11,Nike,Air Force 1 Low,90,8.5,M,4.7
+12,Adidas,Ultraboost 21,180,9.5,F,4.9
+13,Puma,Cali Sport,80,7,F,4.6
+14,Reebok,Classic Leather,75,8.5,M,4.5
+15,New Balance,990v5,175,10.5,M,4.8
+16,Vans,Sk8-Hi,70,9,F,4.7
+17,Under Armour,Project Rock 3,140,9.5,M,4.9
+18,Converse,Chuck 70 High Top,85,8,F,4.8
+19,Asics,Gel-Lyte III,120,9,M,4.6
+20,Jordan,Air Jordan 11 Retro,220,10,F,4.9
+21,Nike,Air Max 270,150,9,M,4.8
+22,Adidas,Superstar,80,8,F,4.7
+23,Nike,Air Zoom Pegasus 38,120,9.5,M,4.9
+24,Adidas,NMD_R1,130,8,F,4.8
+25,Puma,Future Rider,90,7.5,M,4.7
+26,Reebok,Club C 85 Vintage,75,8.5,F,4.6
+27,New Balance,Fresh Foam 1080v11,150,10,M,4.9
+28,Vans,Authentic,50,7,F,4.5
+29,Under Armour,Hovr Phantom 2,140,9,M,4.8
+30,Converse,Jack Purcell Signature Low Top,65,8.5,F,4.7
+31,Asics,Gel-Kinsei OG,180,9.5,M,4.6
+32,Jordan,Air Jordan 5 Retro,200,10.5,F,4.9
+33,Puma,Future Rider,90,7.5,M,4.7
+34,Reebok,Club C 85 Vintage,75,8.5,F,4.6
+35,New Balance,Fresh Foam 1080v11,150,10,M,4.9
+36,Vans,Authentic,50,7,F,4.5
+37,Under Armour,Hovr Phantom 2,140,9,M,4.8
+38,Converse,Jack Purcell Signature Low Top,65,8.5,F,4.7
+39,Asics,Gel-Kinsei OG,180,9.5,M,4.6
+40,Jordan,Air Jordan 5 Retro,200,10.5,F,4.9
+41,Nike,Air Max 97,160,8.5,M,4.7
+42,Adidas,Stan Smith,80,9,F,4.6
+43,Puma,Rider Play On,100,7.5,M,4.8
+44,Reebok,Classic Nylon,65,8,F,4.5
+45,New Balance,992,180,9.5,M,4.9
+46,Vans,Slip-On,55,7.5,F,4.6
+47,Under Armour,Charged Pursuit 2,70,10,M,4.5
+48,Converse,Chuck Taylor All Star High Top,70,8.5,F,4.7
+49,Asics,Gel-Nimbus 23,150,9,M,4.8
+50,Jordan,Air Jordan 3 Retro,190,10,F,4.7
+51,Nike,React Infinity Run Flyknit,160,9.5,M,4.8
+52,Adidas,Adilette Slides,45,8,F,4.5
+53,Puma,RS-Fast,120,7.5,M,4.9
+54,Reebok,Zig Kinetica II,130,8.5,F,4.7
+55,New Balance,574 Classic,85,10,M,4.6
+56,Vans,Sk8-Mid,65,7.5,F,4.4
+57,Under Armour,HOVR Apex 2,140,9,M,4.7
+58,Converse,Chuck Taylor All Star Lift,75,8.5,F,4.6
+59,Asics,Gel-Kayano 28,180,9.5,M,4.9
+60,Jordan,Air Jordan 12 Retro,220,10.5,F,4.8
+61,Nike,Zoom Freak 3,120,9,M,4.7
+62,Adidas,Stan Smith Primeblue,90,8,F,4.6
+63,Puma,Calibrate Restored,110,7.5,M,4.8
+64,Reebok,Classic Leather Legacy,80,8.5,F,4.5
+65,New Balance,FuelCell Propel v2,110,10,M,4.9
+66,Vans,Authentic Platform 2.0,60,7,F,4.4
+67,Under Armour,Charged Bandit 7,100,9.5,M,4.6
+68,Converse,Chuck 70 High 'Patchwork',95,8.5,F,4.7
+69,Asics,Gel-Cumulus 23,130,9,M,4.8
+70,Jordan,Air Jordan 1 High OG 'University Blue',170,10.5,F,4.9
+71,Nike,ZoomX Vaporfly NEXT%,250,9.5,M,4.9
+72,Adidas,Superstar Bold,100,8,F,4.7
+73,Puma,Rider 020 Play On,95,7.5,M,4.8
+74,Reebok,Classic Leather Ripple,70,8.5,F,4.6
+75,New Balance,Fresh Foam Roav,90,10,M,4.5
+76,Vans,Authentic Chino Skate,65,7,F,4.4
+77,Under Armour,Hovr Infinite 3,140,9,M,4.7
+78,Converse,Chuck Taylor All Star Seasonal,55,8.5,F,4.6
+79,Asics,Gel-Venture 8,70,9.5,M,4.8
+80,Jordan,Air Jordan 13 Retro,190,10.5,F,4.7
+81,Nike,Air Max 2090,150,9,M,4.8
+82,Adidas,Ultraboost DNA,180,8.5,F,4.7
+83,Puma,Rider Vintage,85,7,M,4.6
+84,Reebok,Zig Dynamica,110,8.5,F,4.9
+85,New Balance,997 Sport,120,10.5,M,4.7
+86,Vans,Old Skool Platform,70,7.5,F,4.5
+87,Under Armour,Hovr Machina 2,160,9.5,M,4.8
+88,Converse,Chuck Taylor All Star Lift Ripple,80,8,F,4.6
+89,Asics,Gel-Lyte V,130,9,M,4.9
+90,Jordan,Air Jordan 9 Retro,190,10,F,4.8
