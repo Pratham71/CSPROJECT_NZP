@@ -2,7 +2,6 @@ import mysql.connector
 from details import GetDetails
 from time import sleep
 host,user,passwd,database=GetDetails()
-# with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as con:
 
 def AddItem():
     with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as con:
