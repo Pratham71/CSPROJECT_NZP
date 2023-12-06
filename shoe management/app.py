@@ -37,7 +37,6 @@ def UpdateItem():
         query="desc shoes"
         cursor.execute(query)
         headers=[i[0] for i in cursor.fetchall()]
-        print(headers)
         ans="y"
         while ans.lower() in "y":
             SID=int(input("Enter the shoe id:"))
@@ -87,14 +86,15 @@ def UpdateItem():
 
             
             elif choice == 6:
-                new_review=float("Enter the new rating for the shoe:")
+                new_review=float(input("Enter the new rating for the shoe:"))
                 query=f"update shoes set review='{new_review}' where sid = {SID}"
                 cursor.execute(query)
                 con.commit()
             else:
                 print("Invalid Choice!")
             ans=input("Do you want to use more operations? [y/n]:")
-UpdateItem()      
+
+ 
 def ShowItems():
     with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as con:
         cursor=con.cursor()
@@ -180,4 +180,4 @@ def main():
             break
         else:
             print("Invalid Choice/nTry Again")
-
+main()
