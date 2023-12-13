@@ -30,6 +30,9 @@ def AddItem():
             print()
             ans=input("Do you want to add more shoes [y/n]:")
 
+def search():
+    #add this command 
+
 def UpdateItem():
     with mysql.connector.connect(host=host,user=user,passwd=passwd,database=database) as con:
         cursor=con.cursor()
